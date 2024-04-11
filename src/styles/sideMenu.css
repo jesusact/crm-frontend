@@ -1,0 +1,88 @@
+.sideMenuContainer{
+    width:15rem;
+    text-align: left;
+    background-color: rgb(250,250,250);
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+  .sideMenuContainer h3{
+    margin-bottom: 10px;
+    color: rgb(204,204,204);
+  }
+  .sideMenuContainer li{
+    display: flex;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 7px;
+      align-items: center;
+  
+  }
+  
+  .icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+  
+  .sideMenuContainer li:hover{
+    background-color: rgb(102,90,236);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .sideMenuContainer li:hover .icon{
+    filter: brightness(0) invert(1);
+  
+  }
+  
+  .logoContainer{
+    max-width: 10rem;
+    padding-bottom: 15px;
+  }
+  
+  .mainMenuContainer{
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  
+  .teamsContainer{
+    padding: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .teamsContainer .colorPoint{
+    width: 6px;
+    height: 6px;
+    margin-right: 5%;
+    border-radius: 20px;
+  }
+  
+  .teamsContainer #hrColor{
+  background-color: rgb(42,197,244);
+  }
+  
+  .teamsContainer #designColor{
+  background-color: rgb(246, 188, 23);
+  }
+  
+  .teamsContainer #marketingColor{
+  background-color: rgb(67,183, 57);
+  }
+  
+  .teamsContainer #developmentColor{
+  background-color: red;
+  }
+  
+  
+  .finalButtonsContainer{
+    position: absolute;
+    bottom: 0;
+    width: 15rem;
+    padding: 10px;
+    color: rgb(204,204,204);
+  }
+  
+  
+  
+  
