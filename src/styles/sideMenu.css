@@ -78,9 +78,11 @@
   .finalButtonsContainer{
     position: absolute;
     bottom: 0;
-    width: 15rem;
+    width: 14rem;
     padding: 10px;
     color: rgb(204,204,204);
+        background-color: rgb(250,250,250);
+
   }
   
   

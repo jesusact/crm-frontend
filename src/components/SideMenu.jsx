@@ -17,7 +17,7 @@ export function SideMenu() {
         </div>
 
         <div className="mainMenuContainer">
-            <h3 className="text-sm">MAIN MENU</h3>
+            <h3 className="text-md">MAIN MENU</h3>
             <ul>
                 <li><img src={dashboardIcon} className="icon"/>Dashboard</li>
                 <li><img src={emailIcon} className="icon"/>Messages</li>
@@ -28,7 +28,7 @@ export function SideMenu() {
         </div>
 
         <div className="teamsContainer">
-            <h3 className="text-sm">TEAMS</h3>
+            <h3 className="text-md">TEAMS</h3>
             <ul>
                 <li><div className="colorPoint" id="hrColor"></div>HR</li>
                 <li><div className="colorPoint" id="designColor"></div>Design</li>
