@@ -331,7 +331,7 @@ export function Transactions() {
   };
 
   return (
-    <div className="p-4 mt-5 border-solid border-gray-200 border-2 rounded-xl">
+    <div className="p-4 mt-5 border-solid border-gray-200 border-2 rounded-xl h-fit">
       <h2 className="text-lg mb-7 font-semibold text-left">Transactions</h2>
       <table className="w-full text-left">
         <thead>

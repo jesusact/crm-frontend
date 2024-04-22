@@ -3,7 +3,4 @@
   text-align: center;
   height: 100vh;
 }
-.grid-container{
-  display: grid;
-  grid-template-columns: auto 50% 25%;
-}
+

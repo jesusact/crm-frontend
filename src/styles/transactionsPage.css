@@ -1,0 +1,4 @@
+.grid-container-transactions{
+    display: grid;
+    grid-template-columns: 25% 65%;
+  }

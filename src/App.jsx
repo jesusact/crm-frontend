@@ -1,31 +1,20 @@
-import { SideMenu } from './components/SideMenu'
-import { SearchInput } from './components/SearchInput'
-import { Dasboard } from './components/Dashboard'
-import { Overview } from './components/Overview'
-import { Meetings } from './components/Meetings'
-import './App.css'
-
+// App.js
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DashboardPage } from "./components/DashboardPage";
+import { TransactionsPage } from "./components/TransactionsPage";
+import { PeoplePage } from "./components/PeoplePage";
 function App() {
   return (
-    <div className='grid-container'>
-
-      <div className='grid-item'>
-         <SideMenu />
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/transactions" element={<TransactionsPage />} />
+          <Route path="/people" element={<PeoplePage />} />
+          <Route path="/" element={<DashboardPage />} />
+        </Routes>
       </div>
-
-      <div className='grid-item'>
-         <SearchInput/>
-         <Dasboard/>
-      </div>
-
-      <div className='grid-item'>
-      <Overview />
-      <Meetings />
-
-      </div>
-
-    </div>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
