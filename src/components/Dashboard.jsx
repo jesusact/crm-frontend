@@ -1,6 +1,6 @@
 import { TotalEmployees } from "./TotalEmployees"
 import { TotalFreelancers } from "./TotalFreelancers"
-import { Transactions } from "./Transactions"
+import { TransactionsView } from "./TransactionsView"
 export function Dasboard(){
     return (
         <>
@@ -9,7 +9,7 @@ export function Dasboard(){
         <TotalEmployees employees={555}/>
         <TotalFreelancers freelancers={234}/>
         </div>
-        <Transactions/>
+        <TransactionsView/>
         </>
     )
 }
