@@ -42,10 +42,12 @@ export function SideMenu() {
               People
             </li>
           </Link>
+          <Link to="/meetings">
           <li>
             <img src={requestIcon} className="icon" alt="request" />
-            Request
+            Meetings
           </li>
+          </Link>
         </ul>
       </div>
 

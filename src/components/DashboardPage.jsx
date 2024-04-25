@@ -2,10 +2,22 @@ import { SideMenu } from "./SideMenu";
 import { Dasboard } from "./Dashboard";
 import { SearchInput } from "./SearchInput";
 import { Overview } from "./Overview";
-import { Meetings } from "./Meetings";
 import '../styles/dashboardPage.css';
+import { ShowMeetings } from "./Meetings";
+import { useState } from "react";
+
 
 export function DashboardPage() {
+  const [meetings, setMeetings] = useState([]);
+
+  const handleAddMeeting = (newMeeting) => {
+    setMeetings([...meetings, newMeeting]);
+  };
+
+  const handleDeleteMeeting = (id) => {
+    const updatedMeetings = meetings.filter((meeting) => meeting.id !== id);
+    setMeetings(updatedMeetings);
+  };
   return (
     <div className="grid-container">
       <div className="grid-item">
@@ -19,7 +31,8 @@ export function DashboardPage() {
 
       <div className="grid-item">
         <Overview />
-        <Meetings />
+        <div className="m-5"><ShowMeetings meetings={meetings} onAddMeeting={handleAddMeeting} onDeleteMeeting={handleDeleteMeeting} /></div>
+
       </div>
     </div>
   );
