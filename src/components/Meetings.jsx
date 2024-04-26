@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SketchPicker } from "react-color";
@@ -21,7 +21,7 @@ export function CreateMeeting({ onAddMeeting }) {
     }).format(date);
 
     const newMeeting = {
-      id: Math.floor(Math.random() * 10000) + 1, // Generar un ID único
+      id: Math.floor(Math.random() * 10000) + 1,
       title,
       date: formattedDate,
       color,
@@ -31,6 +31,10 @@ export function CreateMeeting({ onAddMeeting }) {
     setTitle("");
     setDate(new Date());
     setColor("#000000");
+
+    // Guardar la reunión en localStorage
+    const meetings = JSON.parse(localStorage.getItem("meetings")) || [];
+    localStorage.setItem("meetings", JSON.stringify([...meetings, newMeeting]));
   };
 
   const handleColorChange = (color) => {
@@ -82,7 +86,22 @@ export function CreateMeeting({ onAddMeeting }) {
   );
 }
 
-export function ShowMeetings({ meetings, onDeleteMeeting }) {
+export function ShowMeetings({ onDeleteMeeting }) {
+  const [meetings, setMeetings] = useState([]);
+
+  useEffect(() => {
+    // Cargar reuniones desde localStorage cuando el componente se monte
+    const storedMeetings = JSON.parse(localStorage.getItem("meetings")) || [];
+    setMeetings(storedMeetings);
+  }, []);
+
+  const handleDeleteMeeting = (id) => {
+    // Eliminar la reunión del estado y de localStorage
+    const updatedMeetings = meetings.filter((meeting) => meeting.id !== id);
+    setMeetings(updatedMeetings);
+    localStorage.setItem("meetings", JSON.stringify(updatedMeetings));
+  };
+
   return (
     <div className="p-4 border-solid border-gray-200 border-2 rounded-xl h-fit">
       <h2 className="text-lg font-semibold mb-4">Meetings</h2>
@@ -102,7 +121,7 @@ export function ShowMeetings({ meetings, onDeleteMeeting }) {
               {meeting.date}
             </div>
             <button
-              onClick={() => onDeleteMeeting(meeting.id)}
+              onClick={() => handleDeleteMeeting(meeting.id)}
               className="text-white bg-red-600 font-semibold p-2 ml-3 rounded hover:bg-red-700"
             >
               Delete

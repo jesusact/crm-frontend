@@ -3,10 +3,10 @@ import "../styles/sideMenu.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logotipo.png";
 import dashboardIcon from "../assets/icons/dashboard-black.png";
-import emailIcon from "../assets/icons/email.png";
+import bankIcon from "../assets/icons/bank.png";
 import rolesIcon from "../assets/icons/group.png";
 import documentIcon from "../assets/icons/document.png";
-import requestIcon from "../assets/icons/request.png";
+import meetingIcon from "../assets/icons/team.png";
 import settingsIcon from "../assets/icons/settings.png";
 import logoutIcon from "../assets/icons/logout.png";
 export function SideMenu() {
@@ -28,7 +28,7 @@ export function SideMenu() {
 
           <Link to="/transactions">
             <li>
-              <img src={emailIcon} className="icon" alt="messages" />
+              <img src={bankIcon} className="icon" alt="transactions" />
               Transactions
             </li>
           </Link>
@@ -44,7 +44,7 @@ export function SideMenu() {
           </Link>
           <Link to="/meetings">
           <li>
-            <img src={requestIcon} className="icon" alt="request" />
+            <img src={meetingIcon} className="icon" alt="meeting" />
             Meetings
           </li>
           </Link>
