@@ -1,6 +1,6 @@
 import { TotalEmployees } from "./TotalEmployees"
 import { TotalFreelancers } from "./TotalFreelancers"
-import { TransactionsView } from "./TransactionsView"
+import { TransactionsView } from "./Transactions"
 export function Dasboard(){
     return (
         <>

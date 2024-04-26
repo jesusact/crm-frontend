@@ -1,7 +1,6 @@
 import ReactPaginate from 'react-paginate';
 import { useState } from 'react';
-export function Transactions() {
-const initialTransaction= [{
+const initialTransactions= [{
   bill: "#67846",
   freelancer: "Elsa Campano",
   job: "Web Development",
@@ -317,8 +316,8 @@ const initialTransaction= [{
   status: "Paid",
 }];
 
-
-  const [transactions, setTransactions] = useState(initialTransaction);
+export function Transactions() {
+  const [transactions, setTransactions] = useState(initialTransactions);
   const [editIndex, setEditIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -337,8 +336,7 @@ const initialTransaction= [{
   };
 
   const handleSave = () => {
-    setEditIndex(null); // Finaliza el modo de edición
-    // Aquí puedes actualizar el array de objetos si es necesario
+    setEditIndex(null); 
   };
 
   const handleDelete = (index) => {
@@ -506,5 +504,74 @@ const initialTransaction= [{
       </div>
     </div>
     
+  );
+}
+
+export function TransactionsView() {
+    
+  const [transactions, setTransactions] = useState(initialTransactions);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const transactionsPerPage = 10;
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const offset = currentPage * transactionsPerPage;
+  const currentTransactions = transactions.slice(offset, offset + transactionsPerPage);
+  const pageCount = Math.ceil(transactions.length / transactionsPerPage);
+
+  return (
+    <div className="p-4 mt-5 border-solid border-gray-200 border-2 rounded-xl">
+      <h2 className="text-lg mb-7 font-bold text-left">Transactions</h2>
+      <table className="w-full text-left">
+        <thead>
+          <tr>
+            <th className="font-bold">Bills</th>
+            <th className="font-bold">Freelancer</th>
+            <th className="font-bold">Job</th>
+            <th className="font-bold">Total</th>
+            <th className="font-bold">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentTransactions.map((transaction) => (
+            <tr key={transaction.bill} className="pb-4">
+              <td><div className="text-customPurple text-center bg-purple-100 rounded-lg mr-4 p-1 font-semibold">{transaction.bill}</div></td>
+              <td>{transaction.freelancer}</td>
+              <td>{transaction.job}</td>
+              <td>{`€${transaction.total}`}</td>
+              <td>
+                <div className={"font-medium rounded text-center p-1 " + (transaction.status === "Paid" ? "text-green-700 bg-green-100" : "text-red-700 bg-red-100")}>
+                  {transaction.status}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="flex justify-center mt-4">
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          breakLabel={'...'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination flex'}
+          activeClassName={'active'}
+          previousClassName={'px-2 py-1 border border-gray-300 rounded mr-2'}
+          nextClassName={'px-2 py-1 border border-gray-300 rounded ml-2'}
+          pageClassName={'px-2 py-1 border border-gray-300 rounded'}
+          breakClassName={'px-2 py-1 border border-gray-300 rounded'}
+          previousLinkClassName={'text-customPurple'}
+          nextLinkClassName={'text-customPurple'}
+          pageLinkClassName={'text-customPurple'}
+          breakLinkClassName={'text-customPurple'}
+        />
+      </div>
+    </div>
   );
 }
