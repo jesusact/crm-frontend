@@ -31,7 +31,7 @@ export function DashboardPage() {
 
       <div className="grid-item">
         <Overview />
-        <div className="m-5 h-1/4 overflow-scroll"><ShowMeetings meetings={meetings} onAddMeeting={handleAddMeeting} onDeleteMeeting={handleDeleteMeeting} /></div>
+        <div className="m-5 h-64 overflow-scroll"><ShowMeetings meetings={meetings} onAddMeeting={handleAddMeeting} onDeleteMeeting={handleDeleteMeeting} /></div>
 
       </div>
     </div>

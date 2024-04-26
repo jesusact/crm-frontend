@@ -88,12 +88,22 @@ export function CreateMeeting({ onAddMeeting }) {
 
 export function ShowMeetings({ onDeleteMeeting }) {
   const [meetings, setMeetings] = useState([]);
+  const [sortByDateAsc, setSortByDateAsc] = useState(true); // Estado para controlar el orden ascendente/descendente
 
   useEffect(() => {
     // Cargar reuniones desde localStorage cuando el componente se monte
     const storedMeetings = JSON.parse(localStorage.getItem("meetings")) || [];
-    setMeetings(storedMeetings);
+    // Ordenar reuniones por fecha
+    const sortedMeetings = storedMeetings.sort((a, b) => new Date(a.date) - new Date(b.date));
+    setMeetings(sortedMeetings);
   }, []);
+
+  const handleSortMeetings = () => {
+    // Invertir el orden de las reuniones
+    const sortedMeetings = [...meetings].reverse();
+    setMeetings(sortedMeetings);
+    setSortByDateAsc(!sortByDateAsc);
+  };
 
   const handleDeleteMeeting = (id) => {
     // Eliminar la reunión del estado y de localStorage
@@ -104,7 +114,17 @@ export function ShowMeetings({ onDeleteMeeting }) {
 
   return (
     <div className="p-4 border-solid border-gray-200 border-2 rounded-xl h-fit">
-      <h2 className="text-lg font-semibold mb-4">Meetings</h2>
+      <div className="flex justify-between mb-3">
+      <h2 className="text-lg font-semibold">Meetings</h2>
+      <div className="flex">
+        <button
+          onClick={handleSortMeetings}
+          className="bg-customPurple text-white px-3 py-2 rounded-md mr-4"
+        >
+          {sortByDateAsc ? "Sort Desc" : "Sort Asc"}
+        </button>
+        </div>
+      </div>
       <ul>
         {meetings.map((meeting) => (
           <li
@@ -115,8 +135,8 @@ export function ShowMeetings({ onDeleteMeeting }) {
               className="w-3 h-3 m-2 rounded-xl"
               style={{ backgroundColor: meeting.color }}
             ></div>
-            <div className="">
-              {meeting.title}
+            <div>
+             <span className="font-semibold">{meeting.title}</span> 
               <br />
               {meeting.date}
             </div>
